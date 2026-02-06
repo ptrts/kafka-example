@@ -5,5 +5,5 @@ import org.springframework.boot.with
 
 
 fun main(args: Array<String>) {
-    fromApplication<KafkaExampleApplication>().with(TestcontainersConfiguration::class).run(*args)
+    fromApplication<App>().with(TestcontainersConfiguration::class).run(*args)
 }

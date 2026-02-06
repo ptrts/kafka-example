@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class KafkaExampleApplication
+class App
 
 fun main(args: Array<String>) {
-    runApplication<KafkaExampleApplication>(*args)
+    runApplication<App>(*args)
 }
