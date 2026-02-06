@@ -3,12 +3,9 @@ package x
 import org.slf4j.LoggerFactory
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Component
-import tools.jackson.databind.ObjectMapper
 
 @Component
-class DemoKafkaConsumer(
-    private val objectMapper: ObjectMapper,
-) {
+class DemoKafkaConsumer {
 
     private val logger = LoggerFactory.getLogger(javaClass)
 
@@ -18,12 +15,7 @@ class DemoKafkaConsumer(
         ],
         groupId = "demo-consumer-group"
     )
-    fun consume(payload: String) {
-        val message: DemoMessage = objectMapper.readValue(
-            payload,
-            DemoMessage::class.java
-        )
-
+    fun consume(message: DemoMessage) {
         logger.info("Demo message received: id={}, name={}", message.id, message.name)
     }
 }

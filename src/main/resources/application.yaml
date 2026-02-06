@@ -2,9 +2,14 @@ spring:
   application:
     name: kafka-example
   kafka:
+    producer:
+      valueSerializer: org.springframework.kafka.support.serializer.JacksonJsonSerializer
     consumer:
       # По-умолчанию, читать все партиции сначала.
       auto-offset-reset: earliest
+      valueDeserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+      properties:
+        spring.json.trusted.packages: "x"
 
 app:
   kafka:
