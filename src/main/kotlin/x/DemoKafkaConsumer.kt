@@ -12,9 +12,18 @@ class DemoKafkaConsumer(
 
     private val logger = LoggerFactory.getLogger(javaClass)
 
-    @KafkaListener(topics = ["\${app.kafka.demo-topic}"], groupId = "demo-consumer-group")
+    @KafkaListener(
+        topics = [
+            $$"${app.kafka.demo-topic}"
+        ],
+        groupId = "demo-consumer-group"
+    )
     fun consume(payload: String) {
-        val message: DemoMessage = objectMapper.readValue(payload, DemoMessage::class.java)
+        val message: DemoMessage = objectMapper.readValue(
+            payload,
+            DemoMessage::class.java
+        )
+
         logger.info("Demo message received: id={}, name={}", message.id, message.name)
     }
 }

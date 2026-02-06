@@ -9,17 +9,19 @@ import org.springframework.stereotype.Component
 class DemoKafkaRunner(
     private val kafkaTopicService: KafkaTopicService,
     private val demoKafkaProducer: DemoKafkaProducer,
-    @Value("\${app.kafka.demo-topic}") private val topicName: String,
+
+    @Value($$"${app.kafka.demo-topic}")
+    private val topicName: String,
 ) {
 
     @EventListener(ApplicationReadyEvent::class)
     fun runDemo() {
         kafkaTopicService.createTopic(topicName)
-        demoKafkaProducer.send(
-            DemoMessage(
-                id = 1L,
-                name = "demo-message",
-            ),
+
+        val message = DemoMessage(
+            id = 1L,
+            name = "demo-message",
         )
+        demoKafkaProducer.send(message)
     }
 }

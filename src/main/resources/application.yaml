@@ -3,6 +3,7 @@ spring:
     name: kafka-example
   kafka:
     consumer:
+      # По-умолчанию, читать все партиции сначала.
       auto-offset-reset: earliest
 
 app:

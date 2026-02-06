@@ -10,14 +10,22 @@ import org.springframework.stereotype.Service
 class DemoKafkaProducer(
     private val kafkaTemplate: KafkaTemplate<String, String>,
     private val objectMapper: ObjectMapper,
-    @Value("\${app.kafka.demo-topic}") private val topicName: String,
+
+    @Value($$"${app.kafka.demo-topic}")
+    private val topicName: String,
 ) {
 
     private val logger = LoggerFactory.getLogger(javaClass)
 
     fun send(message: DemoMessage) {
         val payload = objectMapper.writeValueAsString(message)
-        kafkaTemplate.send(topicName, message.id.toString(), payload)
+
+        kafkaTemplate.send(
+            topicName,
+            message.id.toString(),
+            payload
+        )
+
         logger.info("Demo message sent to topic '{}' : {}", topicName, payload)
     }
 }
