@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: kafka-example
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+
+app:
+  kafka:
+    demo-topic: demo-messages
