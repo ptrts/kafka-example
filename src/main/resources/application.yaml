@@ -7,9 +7,7 @@ spring:
     consumer:
       # По-умолчанию, читать все партиции сначала.
       auto-offset-reset: earliest
-      valueDeserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
-      properties:
-        spring.json.trusted.packages: "x"
+      valueDeserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
 
 app:
   kafka:
