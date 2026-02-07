@@ -4,7 +4,13 @@ spring:
   kafka:
     producer:
       valueSerializer: org.springframework.kafka.support.serializer.JacksonJsonSerializer
+      transaction-id-prefix: kafka-example-
     consumer:
       # По-умолчанию, читать все партиции сначала.
       auto-offset-reset: earliest
       valueDeserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      enable-auto-commit: false
+      properties:
+        isolation.level: read_committed
+    listener:
+      ack-mode: RECORD

@@ -2,11 +2,12 @@ package x
 
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
+import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Component
 
 @Component
 class AppRunner(
-    private val message1Sender: Message1Sender,
+    private val kafkaTemplate: KafkaTemplate<Any, Any>
 ) {
 
     @EventListener(ApplicationReadyEvent::class)
@@ -15,6 +16,6 @@ class AppRunner(
             id = 1L,
             name = "demo-message",
         )
-        message1Sender.send(message)
+        kafkaTemplate.send(message.id.toString(), message)
     }
 }
