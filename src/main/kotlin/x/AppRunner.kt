@@ -5,16 +5,16 @@ import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
 @Component
-class DemoKafkaRunner(
-    private val demoKafkaProducer: DemoKafkaProducer,
+class AppRunner(
+    private val message1Sender: Message1Sender,
 ) {
 
     @EventListener(ApplicationReadyEvent::class)
     fun runDemo() {
-        val message = DemoMessage(
+        val message = Message1(
             id = 1L,
             name = "demo-message",
         )
-        demoKafkaProducer.send(message)
+        message1Sender.send(message)
     }
 }

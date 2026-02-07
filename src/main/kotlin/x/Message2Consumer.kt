@@ -5,17 +5,17 @@ import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Component
 
 @Component
-class DemoKafkaConsumer {
+class Message2Consumer {
 
     private val logger = LoggerFactory.getLogger(javaClass)
 
     @KafkaListener(
         topics = [
-            $$"${app.kafka.demo-topic}"
+            TopicNames.MESSAGE_2
         ],
-        groupId = "demo-consumer-group"
+        groupId = "default"
     )
-    fun consume(message: DemoMessage) {
-        logger.info("Demo message received: id={}, name={}", message.id, message.name)
+    fun consume(message2: Message2) {
+        logger.info("Message2 received: id={}, name={}", message2.id, message2.name)
     }
 }

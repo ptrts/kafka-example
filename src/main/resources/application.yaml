@@ -8,7 +8,3 @@ spring:
       # По-умолчанию, читать все партиции сначала.
       auto-offset-reset: earliest
       valueDeserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
-
-app:
-  kafka:
-    demo-topic: demo-messages

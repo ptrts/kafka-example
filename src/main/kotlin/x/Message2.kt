@@ -1,6 +1,6 @@
 package x
 
-data class DemoMessage(
+data class Message2(
     val id: Long,
     val name: String,
 )
