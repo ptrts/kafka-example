@@ -16,6 +16,8 @@ class AppRunner(
             id = 1L,
             name = "demo-message",
         )
-        kafkaTemplate.send(message.id.toString(), message)
+        kafkaTemplate.executeInTransaction {
+            it.send(TopicNames.MESSAGE_1, message.id.toString(), message)
+        }
     }
 }
