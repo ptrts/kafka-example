@@ -5,6 +5,7 @@ import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.support.KafkaHeaders
 import org.springframework.messaging.handler.annotation.Header
+import org.springframework.messaging.handler.annotation.Payload
 import org.springframework.stereotype.Component
 
 @Component
@@ -20,11 +21,11 @@ class Message1Consumer(
         ],
         groupId = "Message1Consumer"
     )
-    fun consume(message1: Message1, @Header(KafkaHeaders .RECEIVED_TOPIC) topicName: String) {
+    fun consume(@Header(KafkaHeaders.RECEIVED_TOPIC) topicName: String, @Payload message1: Message1) {
 
         logger.info("Message1 received: topic={} id={}, name={}", topicName, message1.id, message1.name)
 
-        throw RuntimeException()
+        //throw RuntimeException()
 
         /*val message2 = Message2(
             message1.id,

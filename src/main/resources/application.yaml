@@ -4,7 +4,7 @@ spring:
   kafka:
     retry:
       topic:
-        enabled: true
+        enabled: false
         attempts: 3
         backoff:
           delay: 1s
