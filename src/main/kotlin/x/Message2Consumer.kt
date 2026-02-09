@@ -13,7 +13,7 @@ class Message2Consumer {
         topics = [
             TopicNames.MESSAGE_2
         ],
-        groupId = "default"
+        groupId = "Message2Consumer"
     )
     fun consume(message2: Message2) {
         logger.info("Message2 received: id={}, name={}", message2.id, message2.name)
