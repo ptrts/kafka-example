@@ -2,9 +2,19 @@ spring:
   application:
     name: kafka-example
   kafka:
+    retry:
+      topic:
+        enabled: true
+        attempts: 3
+        backoff:
+          delay: 1s
+          multiplier: 1.0
+          maxDelay: 30s
+          jitter: 0s
     producer:
       valueSerializer: org.springframework.kafka.support.serializer.JacksonJsonSerializer
       transaction-id-prefix: kafka-example-
+      retries: 3
     consumer:
       # По-умолчанию, читать все партиции сначала.
       auto-offset-reset: earliest
