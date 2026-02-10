@@ -4,14 +4,9 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.config.TopicBuilder
 import org.springframework.kafka.core.KafkaAdmin
-import org.springframework.kafka.support.converter.MessageConverter
-import org.springframework.kafka.support.converter.StringJacksonJsonMessageConverter
 
 @Configuration
 class AppConfiguration {
-
-    @Bean
-    fun messageConverter(): MessageConverter = StringJacksonJsonMessageConverter()
 
     @Bean
     fun topics() = KafkaAdmin.NewTopics(

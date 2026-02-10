@@ -3,8 +3,6 @@ package x
 import org.slf4j.LoggerFactory
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.kafka.core.KafkaTemplate
-import org.springframework.kafka.support.KafkaHeaders
-import org.springframework.messaging.handler.annotation.Header
 import org.springframework.messaging.handler.annotation.Payload
 import org.springframework.stereotype.Component
 
@@ -21,13 +19,11 @@ class Message1Consumer(
         ],
         groupId = "Message1Consumer"
     )
-    fun consume(@Header(KafkaHeaders.RECEIVED_TOPIC) topicName: String, @Payload message1: Message1) {
+    fun consume(@Payload message1: Message1) {
 
-        logger.info("Message1 received: topic={} id={}, name={}", topicName, message1.id, message1.name)
+        logger.info("Message1 received: id={}, name={}", message1.id, message1.name)
 
-        //throw RuntimeException()
-
-        /*val message2 = Message2(
+        val message2 = Message2(
             message1.id,
             message1.name
         )
@@ -36,6 +32,6 @@ class Message1Consumer(
             TopicNames.MESSAGE_2,
             message2.id.toString(),
             message2
-        )*/
+        )
     }
 }
