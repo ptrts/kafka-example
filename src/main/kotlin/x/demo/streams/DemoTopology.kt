@@ -1,6 +1,7 @@
-package demo.streams
+package x.demo.streams
 
 import org.apache.kafka.common.serialization.Serdes
+import org.apache.kafka.common.utils.Bytes
 import org.apache.kafka.streams.KeyValue
 import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.kstream.*
@@ -38,7 +39,7 @@ class DemoTopology {
             builder.globalTable(
                 Topics.PRODUCTS,
                 Consumed.with(stringSerde, jsonSerde<ProductRef>()),
-                Materialized.`as`<String, ProductRef, KeyValueStore<org.apache.kafka.common.utils.Bytes, ByteArray>>("products-store")
+                Materialized.`as`<String, ProductRef, KeyValueStore<Bytes, ByteArray>>("products-store")
             )
 
         // 2) Clicks: enrichment через join с GlobalKTable по productId

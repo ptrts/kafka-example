@@ -1,4 +1,4 @@
-package demo.streams
+package x.demo.streams
 
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.apache.kafka.streams.processor.TimestampExtractor

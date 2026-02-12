@@ -1,4 +1,4 @@
-package demo.streams
+package x.demo.streams
 
 data class ClickEvent(
     val clickId: String,

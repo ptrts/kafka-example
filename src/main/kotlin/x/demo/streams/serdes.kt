@@ -1,4 +1,4 @@
-package demo.streams
+package x.demo.streams
 
 import org.springframework.kafka.support.serializer.JacksonJsonDeserializer
 import org.springframework.kafka.support.serializer.JacksonJsonSerde
