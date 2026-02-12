@@ -16,3 +16,12 @@ spring:
         spring.json.trusted.packages: x
     listener:
       ack-mode: RECORD
+    streams:
+      application-id: demo-streams-variant-a
+      state-dir: /tmp/kafka-streams/demo-variant-a
+      properties:
+        processing.guarantee: exactly_once_v2
+        commit.interval.ms: 1000
+        num.stream.threads: 2
+        default.timestamp.extractor: demo.streams.EventTimestampExtractor
+        topology.optimization: all
